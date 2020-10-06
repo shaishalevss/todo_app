@@ -9,14 +9,30 @@ class TaskTile extends StatelessWidget {
         'Task 1',
         style: kTaskTileTextStyle,
       ),
-      trailing: Checkbox(
-        onChanged: null,
-        value: false,
-        hoverColor: Colors.white,
-        checkColor: Colors.red,
-        activeColor: Colors.green,
-        focusColor: Colors.blue,
-      ),
+      trailing: TaskCheckbox(),
+    );
+  }
+}
+
+class TaskCheckbox extends StatefulWidget {
+  @override
+  _TaskCheckboxState createState() => _TaskCheckboxState();
+}
+
+class _TaskCheckboxState extends State<TaskCheckbox> {
+  bool isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+      value: isChecked,
+      checkColor: Color(0xFF2F4F4F),
+      activeColor: Color(0xFFF5FFFA),
+      onChanged: (newValue) {
+        setState(() {
+          isChecked = newValue;
+        });
+      },
     );
   }
 }
