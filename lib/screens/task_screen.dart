@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/widgets/tasks_list.dart';
+import 'package:todo_app/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF2F4F4F),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+              context: context, builder: (context) => AddTaskScreen());
+        },
+        backgroundColor: Color(0xFFDC143C),
+        child: Icon(
+          Icons.add,
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,20 +38,25 @@ class TasksScreen extends StatelessWidget {
                 SizedBox(
                   height: 10.0,
                 ),
-                Text(
-                  'Todo List:',
-                  style: TextStyle(
-                    color: Color(0xFF7FFFD4),
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'IndieFlower',
+                Center(
+                  child: Text(
+                    'Todo List:',
+                    style: TextStyle(
+                      color: Color(0xFF7FFFD4),
+                      fontSize: 50.0,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'IndieFlower',
+                    ),
                   ),
                 ),
-                Text(
-                  '4 Tasks',
-                  style: TextStyle(
-                    color: Color(0xFF00FFFF),
-                    fontSize: 20.0,
+                Center(
+                  child: Text(
+                    '4 Tasks',
+                    style: TextStyle(
+                      color: Color(0xFF7FFFD4),
+                      fontSize: 20.0,
+                      fontFamily: 'BubblegumSans',
+                    ),
                   ),
                 ),
               ],
@@ -47,6 +64,7 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               decoration: BoxDecoration(
                 color: Color(0xFFF5FFFA),
                 borderRadius: BorderRadius.only(
@@ -54,16 +72,15 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20.0),
                 ),
               ),
+              child: TasksList(),
             ),
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xFFDC143C),
-        child: Icon(
-          Icons.add,
-        ),
-      ),
     );
   }
 }
+
+//Color(0xFF2F4F4F) - greengrey
+//Color(0xFFF5FFFA) - cream
+//Color(0xFF7FFFD4) - textColor
