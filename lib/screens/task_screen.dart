@@ -89,7 +89,3 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
-
-//Color(0xFF2F4F4F) - greengrey
-//Color(0xFFF5FFFA) - cream
-//Color(0xFF7FFFD4) - textColor
